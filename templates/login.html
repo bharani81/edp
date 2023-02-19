@@ -1,0 +1,11 @@
+
+<h1>REGISTER</h1>
+<form method="POST">
+    {% csrf_token %}
+              {{registerform.as_ul}}
+    <br>
+    <input type="submit" value ="register"/>
+</form>
+{%for message in messages%}
+<p>{{message}}</p>
+{% endfor %}

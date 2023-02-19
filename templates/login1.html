@@ -1,0 +1,11 @@
+{%load crispy_forms_tags %}
+<h1>LOGIN</h1>
+<form method = "POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="username" />
+    <input type="password" name="password" placeholder="password" />
+    <input type="submit" value ="login"/>
+</form>
+{% for message in messages%}
+<p>{{message}}</p>
+{% endfor%}

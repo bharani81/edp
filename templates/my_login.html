@@ -1,0 +1,72 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/bdd89edb33.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/loginstyle.css" />
+    <title>FARMX portal</title>
+  </head>
+  <body>
+    <section class="section-plans" id="section-plans">
+
+      <div class="u-center-text">
+        <h2 class="heading-secondary">
+          FARMX PORTAL
+        </h2>
+      </div>
+
+      <div class="row" style=" display:flex ;justify-content: center;" >
+        <div class="card">
+            <div class="inner-box" id="card">
+                <div class="card-front">
+                    <h2>LOGIN</h2>
+                    <form method="POST">
+                      {% csrf_token %}
+                      {{form.path}}
+                            <input type="text" class="input-box" name="username" placeholder="username" />
+                            <input type="password" class="input-box"name ="password" placeholder="Password" required>
+                            <!-- <input type="checkbox">Remember Me -->
+                            <!-- <a href="" style="padding-right:125px;">Forget Password ?</a> -->
+                            <button type="submit" value="login" name="submit" class="submit-btn">Login</button>
+                            {%for message in messages%}
+                              <p class="submit-btn">{{message}}</p>
+                            {% endfor %}
+                    </form>	
+                    <button type="button" class="btn" style="border-radius: 0%;" onclick="openRegister()">I'M NEW HERE</button>
+                    
+                </div>
+                <div class="card-back">
+                    <h2>REGISTER</h2>
+                    <form method="POST">
+                      {% csrf_token %}
+                            <!-- <input type="text" class="input-box" placeholder="Your Name" required>  -->
+                            {{registerform.username}}
+                            <!-- <input type="email" class="input-box" placeholder="Your Email Id" required> -->
+                            {{registerform.email}}
+                            {{registerform.password1}}
+                            <!-- <input type="password" class="input-box" placeholder="Password" required> -->
+                            {{registerform.typeof}}
+                            <!-- <input type="checkbox"><span>I am a Farmer</span><br>
+                            <input type="checkbox"><span>Just a Citizen</span> -->
+                            <button type="submit" value="register" name ="submit" class="submit-btn">Submit</button>
+                    </form>	
+                    <button type="button" style="border-radius: 0%;" class="btn" onclick="openLogin()">I have an account</button>
+                    {%for message in messages%}
+                    <p class="submit-btn">{{message}}</p>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div> 
+      
+    </section>
+    <script src="/static/js/loginjs.js"></script> 
+  </body>
+</html>

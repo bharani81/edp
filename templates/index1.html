@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARMX</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+</head>
+
+<body class="bg-black muli">
+    <nav class="w-100pc flex flex-column md-flex-row md-px-10 py-4 bg-black" style="position: fixed;top:0;">
+        <div class="flex justify-between">
+            <a href="#" class="flex items-center p-2 mr-4 no-underline">
+                <img class="max-h-l2 w-auto" src="https://assets.stickpng.com/images/5ecab699aa31fc00045d6793.png" />
+                <h2 class="p-2" style="color: white;">FARMX</h2>
+            </a>
+            <a data-toggle="toggle-nav" data-target="#nav-items" href="#"
+                class="flex items-center ml-auto md-hidden indigo-lighter opacity-50 hover-opacity-100 ease-300 p-1 m-3">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
+        <div id="nav-items" class="hidden flex sm-w-100pc flex-column md-flex md-flex-row md-justify-end items-center">
+            <a href="#home" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Home</a>
+            <a href="#features" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Features</a>
+            <a href="#pricing" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Services</a>
+            <a href="#blog" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Contact Us</a>
+            <a href="register" class="button bg-white black fw-600 no-underline mx-5">Register</a>
+            <a href="login" class="button bg-white black fw-600 no-underline mx-5">Login</a>
+        </div>
+    </nav>
+
+    <!-- hero section -->
+    <section id="home" class="min-h-100vh flex justify-start items-center">
+        <div class="mx-5 md-mx-l5">
+            <div class="inline-block br-round bg-indigo-30 indigo-lightest p-2 fs-s2 mb-5">
+                <div class="inline-block bg-indigo indigo-lightest br-round px-3 py-1 mr-3 fs-s3">Join Us Now</div>
+                <span style="padding-right: 10px;">We make digital farmers</span>
+            </div>
+            <div>
+                <h1 class="white fs-l3 lh-2 md-fs-xl1 md-lh-1 fw-900 ">Get Farmming Advice<br />From PRO's</h1>
+
+                <div class="br-8 mt-10 inline-flex">
+                    <input type="text"
+                        class="input-lg half bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-s3 py-5 min-w-25vw br-r-0"
+                        placeholder="Any Queries ?">
+                    <button
+                        class="button-lg bg-indigo-lightest-20 indigo-lightest focus-white fw-300 fs-s3 mr-0 br-l-0">Send Us</button>
+                </div>
+                <div class="white opacity-20 fs-s3 mt-3">Framming the new age farmming</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- features -->
+    <section id="features" class="p-10 md-p-l5">
+        <div class="flex flex-column md-flex-row mx-auto">
+            <div class="w-100pc md-w-40pc">
+                <div class="br-8 p-5 m-5">
+                    <div class="flex justify-center items-center bg-indigo-lightest-10 white w-l5 h-l5 br-round mb-5"><i
+                            data-feather="lock" class="w-l5"></i></div>
+                    <h4 class="white fw-600 fs-m3 mb-5">Ask</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 lh-3 opacity-50">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <a href="#"
+                        class="mt-5 button bg-indigo-lightest-10 fs-s3 white no-underline hover-opacity-100 hover-scale-up-1 ease-300">Read</a>
+                </div>
+            </div>
+            <div class="w-100pc md-w-40pc">
+                <div class="br-8 p-5 m-5">
+                    <div class="flex justify-center items-center bg-indigo-lightest-10 white w-l5 h-l5 br-round mb-5"><i
+                            data-feather="key" class="w-l5"></i></div>
+                    <h4 class="white fw-600 fs-m3 mb-5">Get Answer</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 opacity-50">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <a href="#"
+                        class="mt-5 button bg-indigo-lightest-10 fs-s3 white no-underline hover-opacity-100 hover-scale-up-1 ease-300">Read</a>
+                </div>
+            </div>
+            <div class="w-100pc md-w-40pc">
+                <div class="br-8 p-5 m-5">
+                    <div class="flex justify-center items-center bg-indigo-lightest-10 white w-l5 h-l5 br-round mb-5"><i
+                            data-feather="unlock" class="w-l5"></i></div>
+                    <h4 class="white fw-600 fs-m3 mb-5">Learn</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 opacity-50">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <a href="#"
+                        class="mt-5 button bg-indigo-lightest-10 fs-s3 white no-underline hover-opacity-100 hover-scale-up-1 ease-300">Read</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- slider -->
+    <section class="relative bg-indigo-lightest-10">
+        <div id="slider-1">
+            <div class="p-10 md-p-l10 flex justify-center items-center flex-column text-center">
+                <h2 class="white fs-l3 fw-900">Service 1</h2>
+                <p class="indigo-lightest fw-600 fs-m1 opacity-30 my-5">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor </p>
+                <a href="#" class="button-md bg-indigo white fs-s3 br-4 black fw-600 no-underline m-5">Read More</a>
+            </div>
+            <div class="p-10 md-p-l10 flex justify-center items-center flex-column text-center">
+                <h2 class="white fs-l3 fw-900">Service 2</h2>
+                <p class="indigo-lightest fw-600 fs-m1 opacity-30 my-5">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor </p>
+                <a href="#" class="button-md bg-indigo white fs-s3 br-4 black fw-600 no-underline m-5">Read More</a>
+            </div>
+            <div class="p-10 md-p-l10 flex justify-center items-center flex-column text-center">
+                <h2 class="white fs-l3 fw-900">Service 3</h2>
+                <p class="indigo-lightest fw-600 fs-m1 opacity-30 my-5">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor </p>
+                <a href="#" class="button-md bg-indigo white fs-s3 br-4 black fw-600 no-underline m-5">Read More</a>
+            </div>
+        </div>
+        <ul class="absolute list-none w-100pc flex justify-between top-50pc">
+            <li><button
+                    class="prev ml-10 br-round border-indigo-lightest indigo-lightest  bg-transparent flex justify-center items-center p-2 focus-indigo-lighter outline-none"><i
+                        data-feather="chevron-left"></i></button></li>
+            <li><button
+                    class="next mr-10 br-round border-indigo-lightest indigo-lightest  bg-transparent flex justify-center items-center p-2  focus-indigo-lighter outline-none"><i
+                        data-feather="chevron-right"></i></button></li>
+        </ul>
+    </section>
+
+    <!-- big text -->
+    <section class="p-10 md-py-10">
+        <div class="w-100pc md-w-70pc mx-auto py-10">
+            <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
+                Lorem ipsum dolor sit amet, <span class="border-b bc-indigo bw-4"> consectetur</span> adipiscing elit,
+                sed do eiusmod tempor </h2>
+        </div>
+    </section>
+
+    <!-- product options -->
+    <section class="py-l10">
+        <div class="flex flex-column md-flex-row md-w-80pc mx-auto">
+            <div class="w-100pc md-w-50pc">
+                <div class="br-8 p-5 m-5 bg-indigo-lightest-10 pointer hover-scale-up-1 ease-300">
+                    <div class="inline-block bg-indigo indigo-lightest br-3 px-4 py-1 mb-10 fs-s4 uppercase">
+                        Farmer</div>
+                    <div class="indigo-lightest fw-600 fs-m1">Lorem ipsum <span class="opacity-30"> dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.</span> </div>
+                    <a href="#" class="mt-10 button bg-black fs-s3 white no-underline">Read</a>
+                </div>
+            </div>
+            <div class="w-100pc md-w-50pc">
+                <div class="br-8 p-5 m-5 bg-indigo-lightest-10  pointer hover-scale-up-1 ease-300">
+                    <div class="inline-block bg-indigo indigo-lightest br-3 px-4 py-1 mb-10 fs-s4 uppercase">
+                        Citizen</div>
+                    <div class="indigo-lightest fw-600 fs-m1">Lorem ipsum <span class="opacity-30"> dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.</span> </div>
+                    <a href="#" class="mt-10 button bg-black fs-s3 white no-underline">Read</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- pricing -->
+    <section id="pricing">
+        <div class="p-10 flex flex-wrap">
+            <div class="w-100pc md-w-50pc">
+                <div class="p-5">
+                    <h4 class="white fw-800 fs-l3 mb-5">Service Options</h4>
+                    <div class="indigo-lightest fw-600 fs-m1 opacity-50">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <h4 class="white fw-600 fs-m2 mt-10">Farmers trusts us.</h4>
+                    <div class="flex indigo-lightest opacity-50">
+                    </div>
+                </div>
+            </div>
+            <div class="w-100pc md-w-25pc">
+                <div class="m-3 p-5 br-8 bg-indigo-lightest-10 overflow-hidden">
+                    <div class="p-3">
+                        <h3 class="indigo">Citizen</h3>
+                        <div class="white flex items-center"><span class="fs-l5 lh-1">Ask</span></div>
+                    </div>
+                    <div class="p-3 indigo-lightest fw-400 fs-s1 lh-5">
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">1 user</span>
+                        </div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">100 visitors/month</span></div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">1 website</span></div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">24x7 support</span></div>
+                        <div>
+                            <i class="h-3" stroke-width="4" data-feather="x"></i>
+                            <span class="opacity-50">third party integration</span></div>
+                    </div>
+                    <div class="p-3">
+                        <button class="button full bg-black white  hover-opacity-100 hover-scale-up-1 ease-300">SIGN
+                            UP</button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100pc md-w-25pc">
+                <div class="m-3 p-5 br-8 bg-indigo-lightest-10 overflow-hidden">
+                    <div class="p-3">
+                        <h3 class="indigo">Farmer</h3>
+                        <div class="white flex items-center"><span class="fs-l5 lh-1">Answer</span></div>
+                    </div>
+                    <div class="p-3 indigo-lightest fw-400 fs-s1 lh-5">
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50"> 5 user</span></div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">10,000 visitors/month</span></div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">3 website</span></div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">24x7 support</span></div>
+                        <div>
+                            <i class="h-3 indigo" stroke-width="4" data-feather="check"></i>
+                            <span class="opacity-50">third party integration</span></div>
+                    </div>
+                    <div class="p-3">
+                        <button class="button full bg-black white hover-opacity-100 hover-scale-up-1 ease-300">SIGN
+                            UP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- testimonials -->
+    <section class="p-10 md-p-l5">
+        <div id="slider-2">
+            <div class="px-3">
+                <div class="p-8 br-8 bg-indigo-lightest-10 relative">
+                    <span class="fs-l5 lh-1 white opacity-10 absolute top-0 z--1">&#10077;</span>
+                    <p class="fw-600 fs-m1 indigo-lightest opacity-80 italic ls-wider">One of the very usefull Ideas I have come across So far</p>
+                    <div class="flex items-center my-5">
+                        <div class="block br-round border bc-black bw-4 w-l3 h-l3"><img class="br-round"
+                                src="https://randomuser.me/api/portraits/men/46.jpg" alt=""></div>
+                        <div class="ml-4 fs-s1">
+                            <div class="indigo-lightest">Prasidha ShivaShankar</div>
+                            <div class="indigo-lightest opacity-20">DB Manager, XYZ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-3">
+                <div class="p-8 br-8 bg-indigo-lightest-10 relative">
+                    <span class="fs-l5 lh-1 white opacity-10 absolute top-0 z--1">&#10077;</span>
+                    <p class="fw-600 fs-m1 indigo-lightest opacity-80 italic ls-wider">I can clearly see lots of scope for this in the upcoming years</p>
+                    <div class="flex items-center my-5">
+                        <div class="block br-round border bc-black bw-4 w-l3 h-l3"><img class="br-round"
+                                src="https://randomuser.me/api/portraits/men/46.jpg" alt=""></div>
+                        <div class="ml-4 fs-s1">
+                            <div class="indigo-lightest">Clency</div>
+                            <div class="indigo-lightest opacity-20">HR, XYZ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-3">
+                <div class="p-8 br-8 bg-indigo-lightest-10 relative">
+                    <span class="fs-l5 lh-1 white opacity-10 absolute top-0 z--1">&#10077;</span>
+                    <p class="fw-600 fs-m1 indigo-lightest opacity-80 italic ls-wider">This could evolve as farmers new promising source of income</p>
+                    <div class="flex items-center my-5">
+                        <div class="block br-round border bc-black bw-4 w-l3 h-l3"><img class="br-round"
+                                src="https://randomuser.me/api/portraits/men/46.jpg" alt=""></div>
+                        <div class="ml-4 fs-s1">
+                            <div class="indigo-lightest">Meenakshi</div>
+                            <div class="indigo-lightest opacity-20">Managing Director, XYZ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-3">
+                <div class="p-8 br-8 bg-indigo-lightest-10 relative">
+                    <span class="fs-l5 lh-1 white opacity-10 absolute top-0 z--1">&#10077;</span>
+                    <p class="fw-600 fs-m1 indigo-lightest opacity-80 italic ls-wider">I love the team and their spirited approach towards problem solving</p>
+                    <div class="flex items-center my-5">
+                        <div class="block br-round border bc-black bw-4 w-l3 h-l3"><img class="br-round"
+                                src="https://randomuser.me/api/portraits/men/46.jpg" alt=""></div>
+                        <div class="ml-4 fs-s1">
+                            <div class="indigo-lightest">Shrinitha</div>
+                            <div class="indigo-lightest opacity-20">General Developer, XYZ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- featured blog -->
+    <section class="p-10 md-p-l10">
+        <div class="md-w-75pc">
+            <h2 class="white fs-l3 fw-900 lh-1">Join Us in this New ERA of Digital Farming .</h2>
+            <p class="indigo-lightest fw-600 fs-m1 opacity-50 my-5">Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor </p>
+        </div>
+        <div class="relative w-100pc h-75vh bg-cover bg-b" id = "bigimg"
+            style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Ansel_Adams_-_Farm_workers_and_Mt._Williamson.jpg/1200px-Ansel_Adams_-_Farm_workers_and_Mt._Williamson.jpg);">
+            <a href="#"
+                class="bg-white black px-5 py-3 absolute right-0 bottom-0 hover-bg-black hover-white ease-500 flex justify-center items-center after-arrow-right no-underline fs-m1"></a>
+        </div>
+
+    </section>
+
+    <!-- blog -->
+    <section class="p-0 md-p-5">
+        <div class="flex flex-wrap">
+            <div class="w-100pc md-w-25pc p-10 ">
+                <a href="#" class="block no-underline p-5 br-8 hover-bg-indigo-lightest-10 hover-scale-up-1 ease-300" id="team1">
+                    <img class="w-100pc" src="/static/images/bharanibw.jpg" alt=""  >
+                    <p class="fw-600 white fs-m3 mt-3">
+                        20C012 , Bharanidharan CSE2
+                    </p>
+                    <div class="indigo fs-s3 italic after-arrow-right my-4">Roles</div>
+                </a>
+            </div>
+            <div class="w-100pc md-w-25pc p-10" >
+                <a href="#" class="block no-underline p-5 br-8 hover-bg-indigo-lightest-10 hover-scale-up-1 ease-300" id ="team2">
+                    <img class="w-100pc" src="/static/images/dharsanabw.jpg" alt="">
+                    <p class="fw-600 white fs-m3 mt-3">
+                        20C019 , Dharsana CSE2
+                    </p>
+                    <div class="indigo fs-s3 italic after-arrow-right my-4">Roles</div>
+                </a>
+            </div>
+            <div class="w-100pc md-w-25pc p-10" >
+                <a href="#" class="block no-underline p-5 br-8 hover-bg-indigo-lightest-10 hover-scale-up-1 ease-300" id ="team3">
+                    <img class="w-100pc" src="/static/images/chinnybw.jpg" alt="">
+                    <p class="fw-600 white fs-m3 mt-3">
+                        20C015 , Chinnaiyaprabhu CSE2
+                    </p>
+                    <div class="indigo fs-s3 italic after-arrow-right my-4">Roles</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- subscribe -->
+    <section class="p-10 md-p-l5">
+        <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
+            <div class="w-100pc md-w-33pc">
+                <h2 class="white fs-m4 fw-800">Give Us Feed Back</h2>
+                <p class="fw-600 indigo-lightest opacity-40">Help Us Improve in the domains you wish we must improve . Criticism are welcomed .</p>
+            </div>
+            <div class="w-100pc md-w-50pc">
+                <div class="flex my-5">
+                    <input type="text"
+                        class="input-lg flex-grow-1 bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-s3 py-5 br-r-0"
+                        placeholder="Enter your thoughts here">
+                    <button class="button-lg bg-indigo indigo-lightest fw-300 fs-s3 br-l-0">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="p-2 md-p-l2 bg-indigo-lightest-10">
+        <div class="flex flex-wrap">
+            <p class="fw-200 white">This is Footer</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="static/js/script.js"></script>
+</body>
+
+</html>
