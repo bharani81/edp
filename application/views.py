@@ -3,7 +3,8 @@ from .forms import NewUserForm
 from django.contrib.auth import login, authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-
+from .models import user_mapping
+from django.contrib.auth.models import User
 
 def landingpage(request):
     return render(request,'index1.html')
@@ -16,6 +17,7 @@ def register(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
+            typeof = form.cleaned_data.get('typeof')
             return redirect('home')
     else:
         form = NewUserForm()
