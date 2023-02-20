@@ -30,8 +30,12 @@
             <a href="#features" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Features</a>
             <a href="#pricing" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Services</a>
             <a href="#blog" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Contact Us</a>
+            {% if user.is_authenticated%}
+            <a href="logout" class="button bg-white black fw-600 no-underline mx-5">Logout</a>
+            {% else %}
             <a href="register" class="button bg-white black fw-600 no-underline mx-5">Register</a>
             <a href="login" class="button bg-white black fw-600 no-underline mx-5">Login</a>
+            {% endif %}
         </div>
     </nav>
 
@@ -39,8 +43,14 @@
     <section id="home" class="min-h-100vh flex justify-start items-center">
         <div class="mx-5 md-mx-l5">
             <div class="inline-block br-round bg-indigo-30 indigo-lightest p-2 fs-s2 mb-5">
+                {%if user.is_authenticated %}
+                <div class="inline-block bg-indigo indigo-lightest br-round px-3 py-1 mr-3 fs-s3">Welcome</div>
+                <span style="padding-right: 10px;">{{user.username}}</span>
+                {%else %}
                 <div class="inline-block bg-indigo indigo-lightest br-round px-3 py-1 mr-3 fs-s3">Join Us Now</div>
                 <span style="padding-right: 10px;">We make digital farmers</span>
+                {%endif%}
+                
             </div>
             <div>
                 <h1 class="white fs-l3 lh-2 md-fs-xl1 md-lh-1 fw-900 ">Get Farmming Advice<br />From PRO's</h1>
