@@ -13,24 +13,34 @@ def home(request):
     return render(request,'index1.html')
 
 def register(request):    
+    form=NewUserForm()
     if request.method=='POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
             typeof = form.cleaned_data.get('typeof')
+            user_map= user_mapping(user_name = User.objects.get(username = form.cleaned_data.get('username')),typeof =typeof)
+            user_map.save()
             return redirect('home')
-    else:
-        form = NewUserForm()
     return render(request, 'login.html', {'registerform': form})
 
-# def login_register(request):
+def login_register(request):
+    lform = AuthenticationForm()        
+    rform= NewUserForm()
     if request.method=='POST':
-        if request.POST.get('submit') == 'register':
+        if 'register' in request.POST:
             rform = NewUserForm(request.POST)
             if rform.is_valid():
                 rform.save()
+                typeof = rform.cleaned_data.get('typeof')
+                user_map= user_mapping(user_name = User.objects.get(username = rform.cleaned_data.get('username')),typeof =typeof)
+                user_map.save()
                 return redirect('home')
-        elif request.POST.get('submit') == 'login':
+            else:
+                messages.error(request,"Invalid username or password.")
+                print(rform.errors.as_data())
+                print('hi')
+        elif 'login' in request.POST:
             lform = AuthenticationForm(request, data=request.POST)
             print('hi')
             if lform.is_valid():
@@ -41,17 +51,14 @@ def register(request):
                 if user is not None:
                     print('hi')
                     login(request, user)
-                    return render(request,'index.html')
+                    return redirect('home')
                 else:
                     messages.error(request,"Invalid username or password.")
             else:
                 print(lform.cleaned_data.get('username'))
                 print(lform.cleaned_data.get('password'))
                 messages.error(request,"Invalid username or password.")
-    lform = AuthenticationForm()        
-    rform= NewUserForm()
     return render(request,'my_login.html',{'registerform':rform,'loginform':lform})
-
 def login_request(request):
     if request.method=='POST':
         form = AuthenticationForm(request, data=request.POST)

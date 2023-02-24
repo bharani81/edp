@@ -34,7 +34,7 @@
                             <input type="password" class="input-box"name ="password" placeholder="Password" required>
                             <!-- <input type="checkbox">Remember Me -->
                             <!-- <a href="" style="padding-right:125px;">Forget Password ?</a> -->
-                            <button type="submit" value="login" name="submit" class="submit-btn">Login</button>
+                            <button type="submit" value="register" name="login" class="submit-btn">Login</button>
                             {%for message in messages%}
                               <p class="submit-btn">{{message}}</p>
                             {% endfor %}
@@ -55,7 +55,7 @@
                             {{registerform.typeof}}
                             <!-- <input type="checkbox"><span>I am a Farmer</span><br>
                             <input type="checkbox"><span>Just a Citizen</span> -->
-                            <button type="submit" value="register" name ="submit" class="submit-btn">Submit</button>
+                            <button type="submit" value="register" name ="register" class="submit-btn">Submit</button>
                     </form>	
                     <button type="button" style="border-radius: 0%;" class="btn" onclick="openLogin()">I have an account</button>
                     {%for message in messages%}
