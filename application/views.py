@@ -63,20 +63,31 @@ def article(request):
             question_obj.save()
             question_json=Questions.objects.filter( q_id=question_obj.q_id).values('q_id','q_title','q_body','user_id')
             print(question_obj.q_title )
-            return JsonResponse(data = list(question_json) ,safe=False)
-        print('punda')
+            # return JsonResponse(data = list(question_json) ,safe=False)
         if 'upvote' in request.POST:
             question_obj = Questions.objects.get(q_id=request.POST.get('upvote'))
-            is_voted = Question_vote.objects.filter(voted_q_id= question_obj,voted_user_id=request.user)
+            is_voted = Question_vote.objects.filter(voted_q_id= question_obj,voted_user_id=request.user,is_upvote=True)
             if is_voted:
                 Question_vote.objects.filter(voted_q_id= question_obj,voted_user_id=request.user).delete()
                 print('like deleted')
             else: 
-                vote_obj = Question_vote(voted_q_id=question_obj,voted_user_id=request.user,is_upvote=True)
+                Question_vote.objects.filter(voted_q_id= question_obj,voted_user_id=request.user).delete()
+                vote_obj = Question_vote(voted_q_id=question_obj,voted_user_id=request.user,is_upvote=True,is_downvote=False)
                 vote_obj.save()
                 print('liked')
-                setattr(vote_obj,is_downvote=False)
+                #Question_vote.objects.filter(voted_q_id=question_obj,voted_user_id=request.user,is_upvote=True).update(is_downvote=False)
+        if 'downvote' in request.POST:
+            question_obj = Questions.objects.get(q_id=request.POST.get('downvote'))
+            is_voted= Question_vote.objects.filter(voted_q_id=question_obj,voted_user_id=request.user,is_downvote=True)
+            if is_voted:
+                Question_vote.objects.filter(voted_q_id=question_obj,voted_user_id=request.user).delete()
+                print('dislike deleted')
+            else:
+                Question_vote.objects.filter(voted_q_id=question_obj,voted_user_id=request.user).delete()
+                vote_obj =Question_vote(voted_q_id=question_obj,voted_user_id=request.user,is_upvote=False,is_downvote=True)
                 vote_obj.save()
+                print('disliked')
+                # Question_vote.objects.filter(voted_q_id=question_obj,voted_user_id=request.user,is_downvote=True).update(is_upvote=False)
     question_list=[]
     for i in Questions.objects.all():
         new_question_list =[]
@@ -85,7 +96,8 @@ def article(request):
         new_question_list.append(i.user_id)
         new_question_list.append(i.q_time.strftime("%d %b %y"))
         new_question_list.append(i.q_id)
-        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,is_upvote=True).count())
+        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,voted_user_id = request.user,is_upvote=True).count())
+        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,voted_user_id = request.user,is_downvote=True).count())
         question_list.append(new_question_list)
     return render(request,'article.html',{'questions':question_list})
 

@@ -33,23 +33,23 @@ $('.carousel .carousel-item').each(function(){
       }
 });
 
-$(document).ready(function(){
-  $('#question_post').on('submit',function(e){
-  e.preventDefault();
-  console.log('hi di');
-  $.ajax({
-      type:'POST',
-      url:'/article',
-      dataType: "json",
-      data:
-      {
-          question_title:$('#question_title').val(),
-          question_body:$('#question_body').val(),
-          csrfmiddlewaretoken:"{{csrf_token}}",
-      },
-      success: function(response){
-          alert('hello');
-      },
-  });
-});
-});
+// $(document).ready(function(){
+//   $('#question_post').on('submit',function(e){
+//   e.preventDefault();
+//   console.log('hi di');
+//   $.ajax({
+//       type:'POST',
+//       url:'/article',
+//       dataType: "json",
+//       data:
+//       {
+//           question_title:$('#question_title').val(),
+//           question_body:$('#question_body').val(),
+//           csrfmiddlewaretoken:"{{csrf_token}}",
+//       },
+//       success: function(response){
+//           alert('hello');
+//       },
+//   });
+// });
+// });
