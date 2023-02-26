@@ -1,28 +1,16 @@
 from django.shortcuts import  render, redirect
+import json
+from django.http import HttpResponse,JsonResponse
 from .forms import NewUserForm
 from django.contrib.auth import login, authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from .models import user_mapping
+from .models import user_mapping,Questions,Question_vote
 from django.contrib.auth.models import User
+from datetime import datetime
 
 def landingpage(request):
     return render(request,'index1.html')
-
-def home(request):
-    return render(request,'index1.html')
-
-def register(request):    
-    form=NewUserForm()
-    if request.method=='POST':
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            typeof = form.cleaned_data.get('typeof')
-            user_map= user_mapping(user_name = User.objects.get(username = form.cleaned_data.get('username')),typeof =typeof)
-            user_map.save()
-            return redirect('home')
-    return render(request, 'login.html', {'registerform': form})
 
 def login_register(request):
     lform = AuthenticationForm()        
@@ -35,7 +23,7 @@ def login_register(request):
                 typeof = rform.cleaned_data.get('typeof')
                 user_map= user_mapping(user_name = User.objects.get(username = rform.cleaned_data.get('username')),typeof =typeof)
                 user_map.save()
-                return redirect('home')
+                return redirect('')
             else:
                 messages.error(request,"Invalid username or password.")
                 print(rform.errors.as_data())
@@ -51,7 +39,7 @@ def login_register(request):
                 if user is not None:
                     print('hi')
                     login(request, user)
-                    return redirect('home')
+                    return redirect('article')
                 else:
                     messages.error(request,"Invalid username or password.")
             else:
@@ -59,27 +47,51 @@ def login_register(request):
                 print(lform.cleaned_data.get('password'))
                 messages.error(request,"Invalid username or password.")
     return render(request,'my_login.html',{'registerform':rform,'loginform':lform})
-def login_request(request):
-    if request.method=='POST':
-        form = AuthenticationForm(request, data=request.POST)
-        print('hi')
-        if form.is_valid():
-            print('hi')
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.error(request,"Invalid username or password.")
-        else:
-            print(form.cleaned_data.get('username'))
-            messages.error(request,"Invalid username or password.")
-    form = AuthenticationForm()
-    return render(request,'login1.html',{'loginform': form})
 
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("home")
+
+def article(request):
+    if request.method=='POST':
+        if 'post_question' in request.POST:
+        # print('hi')
+            q_title = request.POST.get('question_title')
+            q_body = request.POST.get('question_body')
+            question_obj = Questions(q_title= q_title,q_body=q_body,user_id=request.user)
+            question_obj.save()
+            question_json=Questions.objects.filter( q_id=question_obj.q_id).values('q_id','q_title','q_body','user_id')
+            print(question_obj.q_title )
+            return JsonResponse(data = list(question_json) ,safe=False)
+        print('punda')
+        if 'upvote' in request.POST:
+            question_obj = Questions.objects.get(q_id=request.POST.get('upvote'))
+            is_voted = Question_vote.objects.filter(voted_q_id= question_obj,voted_user_id=request.user)
+            if is_voted:
+                Question_vote.objects.filter(voted_q_id= question_obj,voted_user_id=request.user).delete()
+                print('like deleted')
+            else: 
+                vote_obj = Question_vote(voted_q_id=question_obj,voted_user_id=request.user,is_upvote=True)
+                vote_obj.save()
+                print('liked')
+                setattr(vote_obj,is_downvote=False)
+                vote_obj.save()
+    question_list=[]
+    for i in Questions.objects.all():
+        new_question_list =[]
+        new_question_list.append(i.q_title)
+        new_question_list.append(i.q_body)
+        new_question_list.append(i.user_id)
+        new_question_list.append(i.q_time.strftime("%d %b %y"))
+        new_question_list.append(i.q_id)
+        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,is_upvote=True).count())
+        question_list.append(new_question_list)
+    return render(request,'article.html',{'questions':question_list})
+
+def post_my_question(request):
+    if request.method=='POST':
+        print('hi')
+
+        
+    redirect("article")

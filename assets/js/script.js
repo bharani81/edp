@@ -40,24 +40,24 @@ $(document).ready(function () {
     });
 
     $("#team1").mouseover(function (e) {    
-        $(this).find("img").attr("src","bharani.jpg");
+        $(this).find("img").attr("src","/static/images/bharani.jpg");
     });
     $("#team1").mouseout(function (e) {    
-        $(this).find("img").attr("src","bharanibw.jpg");
+        $(this).find("img").attr("src","/static/images/bharanibw.jpg");
     });
 
     $("#team2").mouseover(function (e) {    
-        $(this).find("img").attr("src","dharsana.jpg");
+        $(this).find("img").attr("src","/static/images/dharsana.jpg");
     });
     $("#team2").mouseout(function (e) {    
-        $(this).find("img").attr("src","dharsanabw.jpg");
+        $(this).find("img").attr("src","/static/images/dharsanabw.jpg");
     });
 
     $("#team3").mouseover(function (e) {    
-        $(this).find("img").attr("src","chinny.jpg");
+        $(this).find("img").attr("src","/static/images/chinny.jpg");
     });
     $("#team3").mouseout(function (e) {    
-        $(this).find("img").attr("src","chinnybw.jpg");
+        $(this).find("img").attr("src","/static/images/chinnybw.jpg");
     });
     
 });

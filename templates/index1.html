@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load socialaccount %}
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,7 @@
             {% if user.is_authenticated%}
             <a href="logout" class="button bg-white black fw-600 no-underline mx-5">Logout</a>
             {% else %}
+            <!-- <a href="{% provider_login_url 'google' %}">Login With Google</a> -->
             <a href="register" class="button bg-white black fw-600 no-underline mx-5">Register/Login</a>
             {% endif %}
         </div>
