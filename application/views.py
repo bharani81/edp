@@ -23,7 +23,7 @@ def login_register(request):
                 typeof = rform.cleaned_data.get('typeof')
                 user_map= user_mapping(user_name = User.objects.get(username = rform.cleaned_data.get('username')),typeof =typeof)
                 user_map.save()
-                return redirect('')
+                return redirect('home')
             else:
                 messages.error(request,"Invalid username or password.")
                 print(rform.errors.as_data())
@@ -39,7 +39,7 @@ def login_register(request):
                 if user is not None:
                     print('hi')
                     login(request, user)
-                    return redirect('article')
+                    return redirect('home')
                 else:
                     messages.error(request,"Invalid username or password.")
             else:
@@ -96,8 +96,8 @@ def article(request):
         new_question_list.append(i.user_id)
         new_question_list.append(i.q_time.strftime("%d %b %y"))
         new_question_list.append(i.q_id)
-        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,voted_user_id = request.user,is_upvote=True).count())
-        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,voted_user_id = request.user,is_downvote=True).count())
+        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,is_upvote=True).count())
+        new_question_list.append(Question_vote.objects.filter(voted_q_id=i,is_downvote=True).count())
         question_list.append(new_question_list)
     return render(request,'article.html',{'questions':question_list})
 
