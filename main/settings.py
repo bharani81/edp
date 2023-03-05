@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +162,9 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+TWILIO_ACCOUNT_SID = 'ACb3042d6f7b4856b45664442f40dec208'
+TWILIO_AUTH_TOKEN = '45d2c4b54c36405d454861207e6d8df2'
+TWILIO_NUMBER='+12706793701' 
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
+
+#jsci5Er81CrDnnZ34CD6wgYxiQcGFqJOkXQqB5rN

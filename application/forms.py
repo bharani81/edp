@@ -2,6 +2,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+Types=[
+    ('farmers','farmer'),
+    ('enthusiasists','enthusiasist')
+    ]
+
 class NewUserForm(UserCreationForm):
     username = forms.CharField(
         required=True,
@@ -38,11 +43,12 @@ class NewUserForm(UserCreationForm):
     )
     typeof = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={
+        widget=forms.Select(
+            choices= Types,
+            attrs={
             'class': 'input-box',
             'name': 'typeof',
-            'placeholder':'type',
-        }),
+        }), 
     )
     class Meta:
 	    model = User

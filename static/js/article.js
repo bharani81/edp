@@ -53,3 +53,19 @@ $('.carousel .carousel-item').each(function(){
 //   });
 // });
 // });
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
+// function myFunction() {
+//   console.log('hi');
+//   var divsToHide = document.getElementById("hide-content");
+//   console.log(divsToHide.style.display);
+//   divsToHide.style.display= "none";
+//   // if( divsToHide.style.display== "none"){
+//   //   divsToHide.style.display = "block";
+//   // }
+//   // else{
+//   //   divsToHide.style.display = "none";
+//   // }    
+// }
