@@ -27,7 +27,7 @@
             </a>
         </div>
         <div id="nav-items" class="hidden flex sm-w-100pc flex-column md-flex md-flex-row md-justify-end items-center">
-            <a href="#home" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Home</a>
+            <a href="article" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Home</a>
             <a href="#features" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Features</a>
             <a href="#pricing" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Services</a>
             <a href="#blog" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Contact Us</a>
@@ -37,6 +37,7 @@
             <!-- <a href="{% provider_login_url 'google' %}">Login With Google</a> -->
             <a href="register" class="button bg-white black fw-600 no-underline mx-5">Register/Login</a>
             {% endif %}
+            <div id="google_translate_element"></div>
         </div>
     </nav>
 
@@ -386,6 +387,12 @@
             <p class="fw-200 white">This is Footer</p>
         </div>
     </footer>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>

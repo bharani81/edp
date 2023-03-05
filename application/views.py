@@ -57,7 +57,7 @@ def login_register(request):
                 if user is not None:
                     print('hi')
                     login(request, user)
-                    return redirect('article')
+                    return redirect('home')
                 else:
                     messages.error(request,"Invalid username or password.")
             else:
