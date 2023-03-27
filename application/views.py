@@ -12,22 +12,6 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from bs4 import BeautifulSoup
 def landingpage(request):
-    # USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
-    # LANGUAGE = "en-US,en;q=0.5"
-    # session = requests.Session()
-    # session.headers['User-Agent'] = USER_AGENT
-    # session.headers['Accept-Language'] = LANGUAGE
-    # session.headers['Content-Language'] = LANGUAGE
-    # m=['Hi Mr/Mrs : bharani',
-    # 'Weather Forecast for Tiruchirappalli',
-    # 'weather : Mist',
-    # 'Description : mist'
-    # 'Pressure : 1017'
-    # 'Windspeed : 4.12']
-    # for string in m:
-    #     html_content = session.get(f'https://translate.google.co.in/?sl=en&tl=ta&text=hi&op=translate').text
-    #     soup = BeautifulSoup(html_content,'html.parser')
-    #     print(soup.find('span'))
     return render(request,'index1.html')
 
 def login_register(request):
@@ -136,7 +120,6 @@ def article(request):
                 vote_obj.save()
                 print('ans disliked')
 
-                
     question_list=[]
     for i in Questions.objects.all():
         new_question_list =[]
@@ -165,8 +148,6 @@ def article(request):
     is_farmer=False
     if user_mapping.objects.filter(user_name=request.user,typeof='farmers'):
         is_farmer=True
-    # print(is_farmer)
-    # print(request.user)
     return render(request,'article.html',{ 'questions':question_list,'isfarmer':is_farmer,'answer_list':answer_list})
 
 def post_my_question(request):

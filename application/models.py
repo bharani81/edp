@@ -40,3 +40,8 @@ class Customer_mobile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     mobile = PhoneNumberField()
     city = models.CharField(max_length=100)
+
+class user_profile(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    mobile = models.ForeignKey(Customer_mobile,on_delete=models.CASCADE)
+    
