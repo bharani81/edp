@@ -150,8 +150,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_ROOT= os.path.join(BASE_DIR,'media')
-MEDIA_URL='MEDIA/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTHENTICATION_BACKENDS = [
@@ -167,4 +166,5 @@ TWILIO_AUTH_TOKEN = '45d2c4b54c36405d454861207e6d8df2'
 TWILIO_NUMBER='+12706793701' 
 GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
 
-#jsci5Er81CrDnnZ34CD6wgYxiQcGFqJOkXQqB5rN
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+MEDIA_URL='MEDIA/'

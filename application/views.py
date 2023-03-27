@@ -1,4 +1,7 @@
+import os
 from django.shortcuts import  render, redirect
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.core.files.storage import FileSystemStorage
 import requests
 from django.contrib.auth.decorators import login_required
 import json
@@ -12,22 +15,6 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from bs4 import BeautifulSoup
 def landingpage(request):
-    # USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
-    # LANGUAGE = "en-US,en;q=0.5"
-    # session = requests.Session()
-    # session.headers['User-Agent'] = USER_AGENT
-    # session.headers['Accept-Language'] = LANGUAGE
-    # session.headers['Content-Language'] = LANGUAGE
-    # m=['Hi Mr/Mrs : bharani',
-    # 'Weather Forecast for Tiruchirappalli',
-    # 'weather : Mist',
-    # 'Description : mist'
-    # 'Pressure : 1017'
-    # 'Windspeed : 4.12']
-    # for string in m:
-    #     html_content = session.get(f'https://translate.google.co.in/?sl=en&tl=ta&text=hi&op=translate').text
-    #     soup = BeautifulSoup(html_content,'html.parser')
-    #     print(soup.find('span'))
     return render(request,'index1.html')
 
 def login_register(request):
@@ -71,17 +58,32 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect('home')
 
+# def content_file_name(filename):
+#     file_root, file_ext = os.path.splitext(filename)
+#     return f'{file_root}_{datetime.utcnow().time()}{file_ext}'
+
 @login_required(login_url='home')
 def article(request):
     if request.method=='POST':
         if 'post_question' in request.POST:
         # print('hi')
             q_title = request.POST.get('question_title')
-            q_body = request.POST.get('question_body')
-            question_obj = Questions(q_title= q_title,q_body=q_body,user_id=request.user)
-            question_obj.save()
-            question_json=Questions.objects.filter( q_id=question_obj.q_id).values('q_id','q_title','q_body','user_id')
-            print(question_obj.q_title )
+            q_body = request.POST.get('question_body')      
+            print(request.FILES)
+            if 'image' in request.FILES:
+                img = request.FILES['image']
+                fs = FileSystemStorage()
+                # img.name = content_file_name(img.name)
+                name = fs.generate_filename(img.name)
+                file = fs.save(name,img)
+                print(name)
+                question_obj = Questions(q_title= q_title,q_body=q_body,user_id=request.user,q_image=name)
+                question_obj.save()
+            else:
+                question_obj = Questions(q_title= q_title,q_body=q_body,user_id=request.user)
+                question_obj.save()
+            question_json=Questions.objects.filter( q_id=question_obj.q_id).values('q_id','q_title','q_body','user_id','q_image')
+            print(question_obj.q_title)
             # return JsonResponse(data = list(question_json) ,safe=False)
         if 'upvote' in request.POST:
             question_obj = Questions.objects.get(q_id=request.POST.get('upvote'))
@@ -135,8 +137,6 @@ def article(request):
                 vote_obj=Answer_vote(voted_ans_id=ans_obj,voted_user_id=request.user,voted_ques_id=ans_obj.answered_question,is_ans_downvote=True)
                 vote_obj.save()
                 print('ans disliked')
-
-                
     question_list=[]
     for i in Questions.objects.all():
         new_question_list =[]
@@ -159,17 +159,17 @@ def article(request):
             object_list.append(Answer_vote.objects.filter(voted_ans_id = ans.answer_id,is_ans_downvote=True).count())
             main_list.append(object_list)
         new_question_list.append(main_list)
+        new_question_list.append(i.q_image)
         # print(list(answers.objects.filter( answered_question=i.q_id)))
         question_list.append(new_question_list)
     answer_list=[]
     is_farmer=False
     if user_mapping.objects.filter(user_name=request.user,typeof='farmers'):
         is_farmer=True
-    # print(is_farmer)
-    # print(request.user)
     return render(request,'article.html',{ 'questions':question_list,'isfarmer':is_farmer,'answer_list':answer_list})
-
 def post_my_question(request):
     if request.method=='POST':
         print('hi')
     redirect("article")
+def profile(request):
+    return render(request,'chat.html')

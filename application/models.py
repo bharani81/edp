@@ -12,6 +12,7 @@ class Questions(models.Model):
     q_title = models.CharField(max_length = 20)
     q_body = models.TextField(max_length=500)
     user_id = models.ForeignKey(User,on_delete = models.CASCADE)
+    q_image = models.ImageField(upload_to = 'pics', default='media\ocr1.jpg')
     q_time = models.DateTimeField(auto_now= True)
 
 class Question_vote(models.Model):
