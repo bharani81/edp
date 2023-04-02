@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import user_mapping,Questions,Question_vote,answers,Customer_mobile,Answer_vote
+from .models import user_mapping,Questions,Question_vote,answers,Customer_mobile,Answer_vote,profile
 from twilio.rest import Client
 from sms import send_sms
 from django.conf import settings 
@@ -7,6 +7,7 @@ from django.contrib.gis.geoip2 import GeoIP2
 import requests
 # from .translate import googleTranslate
 # Register your models here.
+
 
 admin.site.register(user_mapping)
 admin.site.register(Questions)
@@ -38,3 +39,4 @@ class Customer_mob(admin.ModelAdmin):
     ordering = ['user']
     actions = [make_published]
 admin.site.register(Customer_mobile,Customer_mob)
+admin.site.register(profile)

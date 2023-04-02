@@ -8,5 +8,6 @@ urlpatterns=[
     path('post_question',views.post_my_question),
     path('article',views.article,name="article"),
     path('accounts/', include('allauth.urls')),
-    path('profile',views.profile),
+    path('profile',views.my_profile),
+    path('saveprofile',views.my_profile),
 ]

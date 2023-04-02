@@ -10,10 +10,12 @@ from .forms import NewUserForm
 from django.contrib.auth import login, authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from .models import user_mapping,Questions,answers,Question_vote,Answer_vote
+from .models import user_mapping,Questions,answers,Question_vote,Answer_vote,profile
 from django.contrib.auth.models import User
 from datetime import datetime
 from bs4 import BeautifulSoup
+from django.views.decorators.csrf import csrf_protect
+
 def landingpage(request):
     return render(request,'index1.html')
 
@@ -171,5 +173,44 @@ def post_my_question(request):
     if request.method=='POST':
         print('hi')
     redirect("article")
-def profile(request):
-    return render(request,'chat.html')
+def my_profile(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        surname=request.POST.get('surname')
+        mobile = request.POST.get('mobile')
+        address1 = request.POST.get('address1')
+        address2 = request.POST.get('address2')
+        postcode= request.POST.get('postcode')
+        state = request.POST.get('state')
+        education = request.POST.get('education')
+        country = request.POST.get('country')
+        print(name+" "+surname+" "+mobile ) 
+        print(request.FILES)
+        if 'image' in request.FILES:
+            print('hi')
+            img = request.FILES['image']
+            fs = FileSystemStorage()
+            i_name = fs.generate_filename(img.name)
+            file = fs.save(i_name,img)
+            print(i_name)
+            profile_obj= profile(user_id = request.user,first_name=name,surname=surname,mobile=mobile,address1=address1,address2=address2,postcode=postcode,state=state,education=education,country=country,profile_pic=i_name)
+            profile_obj.save()
+            prof_list=[]
+            prof_list.append(name)
+            prof_list.append(surname)
+            prof_list.append(mobile)
+            prof_list.append(address1)
+            prof_list.append(address2)
+            prof_list.append(postcode)
+            prof_list.append(state)
+            prof_list.append(education)
+            prof_list.append(country)
+            prof_list.append(i_name)
+            print(prof_list)
+            return render(request,'profile.html',{'profile':prof_list})
+    
+    return render(request,'snippets.html')
+
+
+def saveprofile(request):
+    return render(request,'article.html')

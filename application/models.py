@@ -41,3 +41,17 @@ class Customer_mobile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     mobile = PhoneNumberField()
     city = models.CharField(max_length=100)
+
+
+class profile(models.Model):
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    first_name= models.CharField(max_length=30)
+    surname = models.CharField(max_length=4)
+    mobile = PhoneNumberField()
+    address1 = models.CharField(max_length=100)
+    address2 =models.CharField(max_length=100)
+    postcode= models.IntegerField()
+    state = models.CharField(max_length=25)
+    education= models.CharField(max_length=100)
+    country =models.CharField(max_length=100)
+    profile_pic = models.ImageField(upload_to = 'pics', default='media\ocr1.jpg')

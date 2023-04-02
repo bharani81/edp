@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block css%}
+<link rel="stylesheet" href="/static/css/snippets.css">
+{%endblock css%}
+{% block quescards %}
+    <div class="row">
+        <div class="col-md-6 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/static/images/bharani.jpg"><span class="font-weight-bold">{{profile.0}}</span><span class="text-black-50"></span></div>
+        </div>
+        <div class="col-md-3 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile </h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name : </label> {{profile.0}}</div>
+                    <div class="col-md-6"><label class="labels">Surname : </label> {{profile.1}}</div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number : </label> {{profile.2}} </div>
+                    <div class="col-md-12"><label class="labels">Address Line 1 : </label>{{profile.3}}</div>
+                    <div class="col-md-12"><label class="labels">Address Line 2 : </label>{{profile.4}}</div>
+                    <div class="col-md-12"><label class="labels">Postcode : </label>{{profile.5}}</div>
+                    <div class="col-md-12"><label class="labels">State</label>{{profile.6}}</div>
+                    <div class="col-md-12"><label class="labels">Education</label>{{profile.7}}</div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Country</label>{{profile.8}}</div>
+                </div>
+                <!-- <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div> -->
+            </div>
+        </div>
+    </div>
+{% endblock quescards %}
